@@ -4,7 +4,7 @@ name: frontend-app-stack
 services:
   frontend-app:
     build:
-      context: .  # Build context is the current directory
+      context: .  # Build context is the current directory.
       dockerfile: Dockerfile  # Specify the Dockerfile to use
       args:
         VITE_API_URL: http://localhost:3001  # API URL for the frontend app
