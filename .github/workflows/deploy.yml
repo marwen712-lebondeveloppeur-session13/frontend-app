@@ -12,7 +12,7 @@ env:
   BUILD_NUMBER: ${{ github.run_number }}  # Unique build number for the pipeline run
   IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/frontend-app:${{ github.run_number }}
   VITE_API_URL: https://api.lebondeveloppeur.net
-  PORT: 3001  # Define a configurable port
+  PORT: 3000  # Define a configurable port
 
 jobs:
   # ✅ Run Unit Tests
@@ -75,7 +75,7 @@ jobs:
               docker ps -q --filter name=frontend-app | grep -q . && docker rm -f frontend-app || echo "No existing container to remove"
 
               # Run the new container with environment variables
-              docker run -d --name frontend-app -p ${{ env.PORT }}:${{ env.PORT }} -e NODE_ENV=production --restart always ${{ env.IMAGE_NAME }}
+              docker run -d --name frontend-app -p ${{ env.PORT }}:80 -e NODE_ENV=production --restart always ${{ env.IMAGE_NAME }}
               
               # Shows running containers
               docker ps
