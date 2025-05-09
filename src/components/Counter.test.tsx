@@ -8,7 +8,7 @@ test('increments count when button is clicked', () => {
   const button = screen.getByText('Increment')
   const countText = screen.getByText(/Count: 0/i)
 
-  expect("countText").toBeInTheDocument()
+  expect(countText).toBeInTheDocument()
 
   fireEvent.click(button)
 
