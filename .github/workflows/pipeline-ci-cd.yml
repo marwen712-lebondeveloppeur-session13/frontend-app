@@ -69,16 +69,16 @@ jobs:
           script: |
 
               # Pull the latest Docker image
-              docker pull ${{ env.IMAGE_NAME }}
+              sudo docker pull ${{ env.IMAGE_NAME }}
               
               # Remove the old container if it exists
-              docker ps -q --filter name=frontend-app | grep -q . && docker rm -f frontend-app || echo "No existing container to remove"
+              sudo docker ps -q --filter name=frontend-app | grep -q . && sudo docker rm -f frontend-app || echo "No existing container to remove"
 
               # Run the new container with environment variables
-              docker run -d --name frontend-app -p ${{ env.PORT }}:80 -e NODE_ENV=production --restart always ${{ env.IMAGE_NAME }}
-              
+              sudo docker run -d --name frontend-app -p ${{ env.PORT }}:80 -e NODE_ENV=production --restart always ${{ env.IMAGE_NAME }}
+
               # Shows running containers
-              docker ps
+              sudo docker ps
 
               # Clean up unused images
               sudo docker image prune -f
