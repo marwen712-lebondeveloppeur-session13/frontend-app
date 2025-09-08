@@ -1,5 +1,5 @@
 # Use official Node.js 14 as base image
-FROM  --platform=linux/amd64 node:18 AS build
+FROM node:18-alpine AS build
 
 # Set working directory
 WORKDIR /app
@@ -21,7 +21,7 @@ COPY . .
 RUN npm run build
 
 
-FROM  --platform=linux/amd64 nginx:alpine
+FROM nginx:alpine
 # Copy the build artifacts from the build stage
 COPY --from=build /app/dist /usr/share/nginx/html
 # NGINX default configuration file
