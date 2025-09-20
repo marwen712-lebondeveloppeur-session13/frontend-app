@@ -99,7 +99,7 @@ jobs:
           script: |
             # Aller dans le dossier où est ton projet Docker Compose
 
-            cd /home/user/devops-script/frontend-app/dev
+            cd /home/user/devops-script/frontend/dev
 
             # Tirer la dernière image depuis DockerHub
 
