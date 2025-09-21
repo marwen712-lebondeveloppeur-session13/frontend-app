@@ -47,9 +47,9 @@ jobs:
         - name: clone source code to runner
           uses: actions/checkout@v5
 
-        # Étape 2 : Construire l’image Docker
+        # Étape 2 : Construire l’image Docker docker build -t ${{ env.DOCKER_IMAGE }} .
         - name: build docker image
-          run: docker build -t ${{ env.DOCKER_IMAGE }} .
+          run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg VITE_API_URL=https://api.11.lebondeveloppeur.net .
 
         # Étape 3 : Taguer l’image avec un numéro de version basé sur `run_number`
         - name: tag docker image
