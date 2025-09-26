@@ -15,6 +15,7 @@ on:
 # --------------------
 env:
   DOCKER_IMAGE: ${{ vars.DOCKERHUB_USERNAME }}/frontend-app
+  VITE_API_URL: https://api.11.lebondeveloppeur.net
 
 jobs:
   # ========================================================
@@ -49,7 +50,7 @@ jobs:
 
         # Étape 2 : Construire l’image Docker docker build -t ${{ env.DOCKER_IMAGE }} .
         - name: build docker image
-          run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg VITE_API_URL=https://api.11.lebondeveloppeur.net .
+          run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg ${{ env.VITE_API_URL }} .
 
         # Étape 3 : Taguer l’image avec un numéro de version basé sur `run_number`
         - name: tag docker image
