@@ -50,7 +50,7 @@ jobs:
 
         # Étape 2 : Construire l’image Docker docker build -t ${{ env.DOCKER_IMAGE }} .
         - name: build docker image
-          run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg ${{ env.VITE_API_URL }} .
+          run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg VITE_API_URL=${{ env.VITE_API_URL }} .
 
         # Étape 3 : Taguer l’image avec un numéro de version basé sur `run_number`
         - name: tag docker image

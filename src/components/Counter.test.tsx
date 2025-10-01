@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import Counter from './Counter'
-import React from 'react'
 
 test('increments count when button is clicked', () => {
   render(<Counter />)
